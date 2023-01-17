@@ -1,8 +1,6 @@
 # Databricks notebook source
 # MAGIC %run ../core/sample_code
 
-# COMMAND ----------
-
 # unittesting for Saprk_2 Assignment
 
 import unittest
@@ -36,15 +34,12 @@ class UtilityTestCase(unittest.TestCase):
         no_of_lines = ghtorrent_df.count()
         self.assertEqual(no_of_lines, 54)
 
-# COMMAND ----------
 
 def test_WARN_count(self):
     ghtorrent_df = create_Torrent_df(self.spark, "_c0", "LogLevel", "_c1", "timestamp", "_c2", "ghtorrent_details",
                                      "dbfs:/FileStore/shared_uploads/harisumanjali328@outlook.com/ghtorrent_logs.txt")
     expected_count =  WARN_count(torrent_df, "LogLevel", "WARN")["warn_count"]
     self.assertEqual(expected_count, 3811)
-
-# COMMAND ----------
 
 def test_ApiClient(self):
     ghtorrent_df = create_Torrent_df(self.spark, "_c0", "LogLevel", "_c1", "timestamp", "_c2", "ghtorrent_details",
@@ -53,7 +48,6 @@ def test_ApiClient(self):
     expected_count = rep_api(torrent_df_extract, "api_client.rb", "repository_torrent")["api_client_repo_count"]
     self.assertEqual(expected_count,37595)
 
-# COMMAND ----------
 
 def ClientReq_http(self):
     ghtorrent_df = create_Torrent_df(self.spark, "_c0", "LogLevel", "_c1", "timestamp", "_c2", "ghtorrent_details",
@@ -63,7 +57,6 @@ def ClientReq_http(self):
     actual_output = " ghtorrent-5 "
     self.assertEqual(expected_ouput,actual_output)
 
-# COMMAND ----------
 
 def testGetFailed_fail_http(self):
     torrent_df = create_Torrent_df(self.spark, "_c0", "LogLevel", "_c1", "timestamp", "_c2", "ghtorrent_details",
@@ -73,7 +66,6 @@ def testGetFailed_fail_http(self):
         actual_output = " ghtorrent-13 "
         self.assertEqual(expected_output,actual_output)
 
-# COMMAND ----------
 
  def test_A_hrs(self):
         torrent_df =  create_Torrent_df(self.spark, "_c0", "LogLevel", "_c1", "timestamp", "_c2", "ghtorrent_details",
@@ -83,7 +75,7 @@ def testGetFailed_fail_http(self):
         actual_output = 16
         self.assertEqual(expected_output,actual_output)
 
-# COMMAND ----------
+
 
  def test_active_repos(self):
         torrent_df = create_Torrent_df(self.spark, "_c0", "LogLevel", "_c1", "timestamp", "_c2", "ghtorrent_details",
@@ -97,5 +89,4 @@ def testGetFailed_fail_http(self):
         def tearDownClass(cls):
             cls.spark.stop()
 
-# COMMAND ----------
 
