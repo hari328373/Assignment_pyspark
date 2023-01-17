@@ -123,13 +123,4 @@ ac_re = active_repos(df1)
 print("count of Active repos")
 ac_hr.show(truncate=False)
 
-# COMMAND ----------
-
-
-
-# COMMAND ----------
-
-
-
-# COMMAND ----------
 
